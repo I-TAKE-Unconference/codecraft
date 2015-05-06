@@ -1,0 +1,54 @@
+buildscript {
+    repositories {
+        maven {
+            url "http://repo1.maven.org/maven2"
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'codecraft'
+    version = '0.1.0'
+}
+
+repositories {
+    maven {
+        url "http://repo1.maven.org/maven2"
+    }
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.hsqldb:hsqldb:2.3.1")
+
+    compile("org.webjars:jquery:2.1.1")
+    compile("org.webjars:bootstrap:3.3.4")
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.+'
+    testCompile("junit:junit")
+
+    testCompile('com.jayway.restassured:rest-assured:2.3.2')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
