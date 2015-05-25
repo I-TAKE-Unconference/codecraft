@@ -1,4 +1,5 @@
-# CodeCraft
+![CodeCraft logo](https://raw.githubusercontent.com/I-TAKE-Unconference/codecraft/master/static/img/codecraft-logo-small.png)
+
 
 CodeCraft is ...
 
