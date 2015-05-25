@@ -3,7 +3,6 @@ package com.itakeunconf.codecraft.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(name = "unique_username", columnNames = "username")})
@@ -16,17 +15,18 @@ public class User {
 
     @Size(min = 6, max = 255)
     @NotNull
-    public String userName;
+    private String userName;
 
-    @Size(min = 8, max = 255)
-    @NotNull
-    public String password;
+    @Column(name = "password_hash", nullable = false)
+    private String passwordHash;
 
     @Size(min = 7, max = 255)
     @NotNull
-    public String emailAddress;
+    private String email;
 
-    public Date createdAt;
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     public Long getId() {
         return id;
@@ -44,27 +44,27 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Role getRole() {
+        return role;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

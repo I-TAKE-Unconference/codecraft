@@ -4,16 +4,15 @@
 <head>
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
           th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
+          rel="stylesheet" media="screen"/>
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
           th:href="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"
-          rel="stylesheet" media="screen" />
+          rel="stylesheet" media="screen"/>
     <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
             th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 </head>
 <body>
 
-<!-- Navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
     <div class="container">
         <div class="navbar-header">
@@ -28,8 +27,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="#" th:href="@{/}">Home</a></li>
             </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout" tabindex="-1" > Logout </a></li>
+            </ul>
         </div>
-        <!--/.nav-collapse -->
     </div>
 </div>
 </body>
