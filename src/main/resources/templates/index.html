@@ -4,14 +4,29 @@
       layout:decorator="layout">
 <head>
     <title>Welcome to CodeCraft</title>
+    <script language="JavaScript" src="/js/index.js"></script>
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="hero-unit">
+    <div class="jumbotron">
         <h1>CodeCraft</h1>
+
         <p>
             Welcome to CodeCraft!
         </p>
+
+        <p>
+            <button class="btn btn-lg btn-primary">Create a new session</button>
+        </p>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title"><strong>Open pairing sessions</strong></h2>
+        </div>
+        <div id="sessions-list-container" class="panel-body">
+
+        </div>
     </div>
 </section>
 </body>
