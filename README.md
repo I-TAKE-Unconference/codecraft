@@ -1,4 +1,4 @@
-![CodeCraft logo](https://raw.githubusercontent.com/I-TAKE-Unconference/codecraft/master/static/img/codecraft-logo-small.png)
+![CodeCraft logo](https://raw.githubusercontent.com/I-TAKE-Unconference/codecraft/master/src/main/resources/static/img/codecraft-logo-small.png)
 
 [![Travis Build](https://api.travis-ci.org/I-TAKE-Unconference/codecraft.png)](https://travis-ci.org/I-TAKE-Unconference/codecraft)
 
