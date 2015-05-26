@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/login").permitAll()              // everybody can see the login page
-                    .antMatchers("/","/index*").permitAll()         // everybody can see the landing
+                    .antMatchers("/","/index*","/about*").permitAll() // everybody can see the landing
                     .antMatchers("/api/public/*").permitAll()       // allow access to public API
                     .antMatchers("/admin").hasRole("ADMIN")         // only admins can see the administration area
                     .anyRequest().authenticated()
