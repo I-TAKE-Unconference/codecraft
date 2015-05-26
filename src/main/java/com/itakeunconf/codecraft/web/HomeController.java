@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping({"/", "/index", "/index.html"})
-    String index() {
-        return "index";
-    }
+    String index() { return "index"; }
 
     @RequestMapping("/about")
-    String about() {return "about";}
+    String about() { return "about"; }
 
 }

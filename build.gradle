@@ -64,3 +64,10 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+test {
+    testLogging {
+        events "failed"
+        exceptionFormat "short"
+    }
+}
