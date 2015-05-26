@@ -12,7 +12,7 @@ CodeCraft is ...
       * [Eclipse](https://github.com/I-TAKE-Unconference/codecraft/wiki/Gradle-and-Eclipse)
       * [Intellij IDEA](https://github.com/I-TAKE-Unconference/codecraft/wiki/Gradle-and-Intellij-IDEA)
       * [NetBeans](https://github.com/I-TAKE-Unconference/codecraft/wiki/Gradle-and-NetBeans)
-    - [Gradle on the command line](https://github.com/I-TAKE-Unconference/codecraft/wiki/Gradle-on-the-Commandline)
+    - [Building and running from the command line](https://github.com/I-TAKE-Unconference/codecraft/wiki/Gradle-on-the-Commandline)
     - [Developing new features](https://github.com/I-TAKE-Unconference/codecraft/wiki/Developing new features)
     - [Running the application](https://github.com/I-TAKE-Unconference/codecraft/wiki/Running-the-application)
     - [Running the application tests](https://github.com/I-TAKE-Unconference/codecraft/wiki/Running-tests)
