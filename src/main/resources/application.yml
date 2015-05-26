@@ -19,12 +19,13 @@ spring:
 spring:
     profiles: production
     datasource:
-        driverClassName: org.hsqldb.jdbc.JDBCDriver
-        url: jdbc:hsqldb:mem:codecraft_prod
-        username: sa
-        password:
+        driverClassName: org.postgresql.Driver
+        url: jdbc:postgresql://localhost:5432/codecraft_prod
+        username: codecraft
+        password: codecraft
     jpa:
         open-in-view: true
         show-sql: false
         hibernate:
             ddl-auto: update
+            disableConnectionTracking: true
