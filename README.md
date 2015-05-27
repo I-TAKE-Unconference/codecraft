@@ -16,4 +16,3 @@ CodeCraft is ...
     - [Developing new features](https://github.com/I-TAKE-Unconference/codecraft/wiki/Developing new features)
     - [Running the application](https://github.com/I-TAKE-Unconference/codecraft/wiki/Running-the-application)
     - [Running the application tests](https://github.com/I-TAKE-Unconference/codecraft/wiki/Running-tests)
-    - [Commiting new code - pull requests](https://github.com/I-TAKE-Unconference/codecraft/wiki/Pull requests)
