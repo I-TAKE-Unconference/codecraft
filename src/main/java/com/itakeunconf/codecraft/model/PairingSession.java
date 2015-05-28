@@ -3,7 +3,6 @@ package com.itakeunconf.codecraft.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -32,7 +31,7 @@ public class PairingSession {
     private String location;
 
     @NotNull
-    private Date when;
+    private Date atTime;
 
     public Long getId() {
         return id;
@@ -82,11 +81,11 @@ public class PairingSession {
         this.location = location;
     }
 
-    public Date getWhen() {
-        return when;
+    public Date getAtTime() {
+        return atTime;
     }
 
-    public void setWhen(Date when) {
-        this.when = when;
+    public void setAtTime(Date atTime) {
+        this.atTime = atTime;
     }
 }

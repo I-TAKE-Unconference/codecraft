@@ -42,7 +42,7 @@ public class CodeCraftDatabaseLoader {
         pairingSessionOne.setLanguage("Java");
         pairingSessionOne.setPractice("TDD");
         pairingSessionOne.setLocation("ITAKE Product Development Room");
-        pairingSessionOne.setWhen(DateUtils.createNow().getTime());
+        pairingSessionOne.setAtTime(DateUtils.createNow().getTime());
         pairingSessionOne.setDuration("1 hour");
 
         PairingSession pairingSessionTwo = new PairingSession();
@@ -50,7 +50,7 @@ public class CodeCraftDatabaseLoader {
         pairingSessionOne.setLanguage("Ruby");
         pairingSessionOne.setPractice("Ninja pairing");
         pairingSessionOne.setLocation("ITAKE Product Development Room");
-        pairingSessionOne.setWhen(DateUtils.createNow().getTime());
+        pairingSessionOne.setAtTime(DateUtils.createNow().getTime());
         pairingSessionOne.setDuration("1 hour");
 
         pairingSessionRepository.save(Arrays.asList(pairingSessionOne,pairingSessionTwo) );
