@@ -7,7 +7,7 @@ $( document ).ready(function() {
         $.each( data, function( idx, item ) {
             items.push( "<li class='list-group-item' id='" + item.id + "'>" +
             "<a href='#' class='btn btn-info pull-right btn-join'>Join</a>" +
-            "<strong>" + item.sessionName + "</strong> <br/> " +
+            "<strong>" + item.sessionName + "</strong> created by <strong>" + item.creator.userName + "</strong> <br/> " +
             "<strong>"+ niceDate(item.atTime) +"</strong>" + " <span>for</span> " +
             "<strong>"+item.duration+"</strong>" + " <span>in</span> " +
             "<strong>"+item.location+"</strong>" + " <span>coding in </span>  " +

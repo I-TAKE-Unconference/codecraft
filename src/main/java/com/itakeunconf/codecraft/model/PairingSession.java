@@ -30,6 +30,10 @@ public class PairingSession {
     private String duration;
 
     @NotNull
+    @ManyToOne
+    private User creator;
+
+    @NotNull
     private String location;
 
     private String dateAsString;
@@ -101,5 +105,13 @@ public class PairingSession {
 
     public void setDateAsString(String dateAsString) {
         this.dateAsString = dateAsString;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }

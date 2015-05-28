@@ -61,7 +61,7 @@ function saveSession() {
         data: JSON.stringify(pairingSession),
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('#csrfToken').val())},
         success: function(){
-            console.log("Pairing session created");
+            window.location.href="/";
         },
         contentType: 'application/json'
     });
