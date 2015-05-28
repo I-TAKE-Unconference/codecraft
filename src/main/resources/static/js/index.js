@@ -6,7 +6,14 @@ $( document ).ready(function() {
       var items = [];
         $.each( data, function( idx, item ) {
             items.push( "<li class='list-group-item' id='" + item.id + "'>" +
-            "<a href='#' class='btn btn-info pull-right'>Join</a><strong>" + item.sessionName + "</strong> <br/> <span>Session details...</span></li>" );
+            "<a href='#' class='btn btn-info pull-right btn-join'>Join</a>" +
+            "<strong>" + item.sessionName + "</strong> <br/> " +
+            "<strong>"+ niceDate(item.atTime) +"</strong>" + " <span>for</span> " +
+            "<strong>"+item.duration+"</strong>" + " <span>in</span> " +
+            "<strong>"+item.location+"</strong>" + " <span>coding in </span>  " +
+            "<strong>"+item.language+"</strong>" + " <span>and practicing</span> " +
+            "<strong>"+item.practice+"</strong>" +
+            "</li>" );
         });
 
         $( "<ul/>", {
@@ -16,3 +23,9 @@ $( document ).ready(function() {
     });
 
 });
+
+function niceDate(timestamp) {
+    var myDate = new Date(timestamp);
+
+    return myDate.toDateString();
+}
