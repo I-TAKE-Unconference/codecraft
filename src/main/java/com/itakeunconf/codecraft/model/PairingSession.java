@@ -1,5 +1,7 @@
 package com.itakeunconf.codecraft.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,7 +32,10 @@ public class PairingSession {
     @NotNull
     private String location;
 
+    private String dateAsString;
+
     @NotNull
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
     private Date atTime;
 
     public Long getId() {
@@ -87,5 +92,14 @@ public class PairingSession {
 
     public void setAtTime(Date atTime) {
         this.atTime = atTime;
+    }
+
+    @Transient
+    public String getDateAsString() {
+        return dateAsString;
+    }
+
+    public void setDateAsString(String dateAsString) {
+        this.dateAsString = dateAsString;
     }
 }
