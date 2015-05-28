@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // make /logout accessible with GET
-                    .logoutSuccessUrl("/login")
+                    .logoutSuccessUrl("/login?logout")
                     .permitAll();
     }
 
