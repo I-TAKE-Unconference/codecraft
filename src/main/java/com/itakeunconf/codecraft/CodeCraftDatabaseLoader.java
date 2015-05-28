@@ -47,11 +47,11 @@ public class CodeCraftDatabaseLoader {
 
         PairingSession pairingSessionTwo = new PairingSession();
         pairingSessionTwo.setSessionName("Ruby ninja pairing");
-        pairingSessionOne.setLanguage("Ruby");
-        pairingSessionOne.setPractice("Ninja pairing");
-        pairingSessionOne.setLocation("ITAKE Product Development Room");
-        pairingSessionOne.setAtTime(DateUtils.createNow().getTime());
-        pairingSessionOne.setDuration("1 hour");
+        pairingSessionTwo.setLanguage("Ruby");
+        pairingSessionTwo.setPractice("Ninja pairing");
+        pairingSessionTwo.setLocation("ITAKE Product Development Room");
+        pairingSessionTwo.setAtTime(DateUtils.createNow().getTime());
+        pairingSessionTwo.setDuration("1 hour");
 
         pairingSessionRepository.save(Arrays.asList(pairingSessionOne,pairingSessionTwo) );
     }
