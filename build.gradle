@@ -54,6 +54,7 @@ dependencies {
 
     compile("org.webjars:jquery:2.1.1")
     compile("org.webjars:bootstrap:3.3.4")
+    compile("org.webjars:bootbox:4.1.0")
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.+'
