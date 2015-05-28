@@ -30,7 +30,7 @@ public class PairingSession {
     @NotNull
     private String location;
 
-    @OneToMany
+    @ManyToOne
     private User participant;
 
     @NotNull
