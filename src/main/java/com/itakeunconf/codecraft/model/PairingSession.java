@@ -30,6 +30,9 @@ public class PairingSession {
     @NotNull
     private String location;
 
+    @OneToMany
+    private User participant;
+
     @NotNull
     private Date atTime;
 
@@ -87,5 +90,9 @@ public class PairingSession {
 
     public void setAtTime(Date atTime) {
         this.atTime = atTime;
+    }
+
+    public void setParticipant(User participant) {
+        this.participant = participant;
     }
 }
