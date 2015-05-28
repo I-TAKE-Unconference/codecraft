@@ -3,6 +3,8 @@ package com.itakeunconf.codecraft.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "sessions")
@@ -16,6 +18,21 @@ public class PairingSession {
     @Size(min = 6, max = 255)
     @NotNull
     private String sessionName;
+
+    @NotNull
+    private String language;
+
+    @NotNull
+    private String practice;
+
+    @NotNull
+    private String duration;
+
+    @NotNull
+    private String location;
+
+    @NotNull
+    private Date when;
 
     public Long getId() {
         return id;
@@ -31,5 +48,45 @@ public class PairingSession {
 
     public void setSessionName(String sessionName) {
         this.sessionName = sessionName;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getPractice() {
+        return practice;
+    }
+
+    public void setPractice(String practice) {
+        this.practice = practice;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getWhen() {
+        return when;
+    }
+
+    public void setWhen(Date when) {
+        this.when = when;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.DateUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -38,11 +39,20 @@ public class CodeCraftDatabaseLoader {
 
         PairingSession pairingSessionOne = new PairingSession();
         pairingSessionOne.setSessionName("Let's code together");
+        pairingSessionOne.setLanguage("Java");
+        pairingSessionOne.setPractice("TDD");
+        pairingSessionOne.setLocation("ITAKE Product Development Room");
+        pairingSessionOne.setWhen(DateUtils.createNow().getTime());
+        pairingSessionOne.setDuration("1 hour");
 
         PairingSession pairingSessionTwo = new PairingSession();
         pairingSessionTwo.setSessionName("Ruby ninja pairing");
+        pairingSessionOne.setLanguage("Ruby");
+        pairingSessionOne.setPractice("Ninja pairing");
+        pairingSessionOne.setLocation("ITAKE Product Development Room");
+        pairingSessionOne.setWhen(DateUtils.createNow().getTime());
+        pairingSessionOne.setDuration("1 hour");
 
         pairingSessionRepository.save(Arrays.asList(pairingSessionOne,pairingSessionTwo) );
-
     }
 }
