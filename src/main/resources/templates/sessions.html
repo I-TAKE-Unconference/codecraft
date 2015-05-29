@@ -12,7 +12,7 @@
 
 <section layout:fragment="content">
 
-    <div class="hero-unit">
+    <div style="margin-top:20px" class="hero-unit">
         <h1>Manage sessions</h1>
     </div>
 
@@ -25,43 +25,36 @@
                 <label>Name</label>
                 <input class="form-control" id="sessionName" name="sessionName"/>
 
-                <p id="sessionNameErrorBlock" class="help-block" style="display:none;">Please
-                    provide a name for the session!</p>
+                <p id="sessionNameErrorBlock" class="help-block">The name of the pairing session</p>
             </div>
             <div class="form-group">
                 <label>When</label>
-                <input class="form-control" id="atTime" name="atTime"/>
-
-                <p id="atTimeErrorBlock" class="help-block" style="display:none;">Please
-                    provide a name for the session!</p>
+                <div class="input-group date" id="datePicker">
+                    <input type="text" class="form-control" id="atTime"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
             </div>
             <div class="form-group">
                 <label>For how long</label>
                 <input class="form-control" id="sessionDuration" name="sessionDuration"/>
-
-                <p id="sessionDurationErrorBlock" class="help-block" style="display:none;">Please
-                    provide a value for the session duration!</p>
+                <p id="sessionDurationErrorBlock" class="help-block">The session duration</p>
             </div>
             <div class="form-group">
                 <label>Location</label>
                 <input class="form-control" id="sessionLocation" name="sessionLocation"/>
-
-                <p id="sessionLocationErrorBlock" class="help-block" style="display:none;">Please
-                    provide a name for the session location!</p>
+                <p id="sessionLocationErrorBlock" class="help-block">The session location</p>
             </div>
             <div class="form-group">
                 <label>Programming language</label>
                 <input class="form-control" id="sessionProgrammingLanguage" name="sessionProgrammingLanguage"/>
-
-                <p id="sessionProgrammingLanguageErrorBlock" class="help-block" style="display:none;">Please
-                    provide a value for the session programming language!</p>
+                <p id="sessionProgrammingLanguageErrorBlock" class="help-block">The session programming language</p>
             </div>
             <div class="form-group">
                 <label>What to practice</label>
                 <input class="form-control" id="whatToPractice" name="whatToPractice"/>
-
-                <p id="whatToPracticeErrorBlock" class="help-block" style="display:none;">Please fill in this
-                    mandatory field!</p>
+                <p id="whatToPracticeErrorBlock" class="help-block">The session development practice</p>
             </div>
             <input id="csrfToken" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
             <div class="form-group">
@@ -71,6 +64,11 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datePicker').datetimepicker();
+        });
+    </script>
 </section>
 
 </html>
