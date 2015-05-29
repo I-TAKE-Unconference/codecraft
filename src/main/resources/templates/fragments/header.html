@@ -35,7 +35,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
                     <a th:case="${false}" href="/login" tabindex="-1" > Login </a>
-                    <a th:case="${true}" href="/logout" tabindex="-1" > Logout </a>
+                    <a th:case="${true}" href="/logout" tabindex="-1" >
+                        Logout [<span sec:authentication="name">user</span>]
+                    </a>
                 </li>
             </ul>
         </div>
