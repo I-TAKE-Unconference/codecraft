@@ -7,7 +7,6 @@ import com.itakeunconf.codecraft.repository.PairingSessionRepository;
 import com.itakeunconf.codecraft.service.impl.DefaultUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +37,7 @@ public class PairingSessionController {
 
     @RequestMapping(value = "/api/public/sessions", method= RequestMethod.GET)
     public @ResponseBody List<PairingSession> getPublicSessions(){
-        return pairingSessionRepository.findAll();
+        return pairingSessionRepository.findAllByOrderByIdDesc();
     }
 
     @RequestMapping(value = "/sessions", method = RequestMethod.GET)
