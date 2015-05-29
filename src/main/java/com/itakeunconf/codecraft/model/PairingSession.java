@@ -33,6 +33,9 @@ public class PairingSession {
     @ManyToOne
     private User creator;
 
+    @ManyToOne
+    private User participant;
+
     @NotNull
     private String location;
 
@@ -113,5 +116,13 @@ public class PairingSession {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public User getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(User participant) {
+        this.participant = participant;
     }
 }

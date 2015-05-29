@@ -4,6 +4,7 @@ import com.itakeunconf.codecraft.model.AuthenticatedUser;
 import com.itakeunconf.codecraft.model.PairingSession;
 import com.itakeunconf.codecraft.model.User;
 import com.itakeunconf.codecraft.repository.PairingSessionRepository;
+import com.itakeunconf.codecraft.service.PairingSessionService;
 import com.itakeunconf.codecraft.service.impl.DefaultUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,17 +23,11 @@ import java.util.List;
 @Controller
 public class PairingSessionController {
 
-    private final PairingSessionRepository pairingSessionRepository;
-
-    private DefaultUserDetailService defaultUserDetailService;
-
-    public void setDefaultUserDetailService(DefaultUserDetailService defaultUserDetailService) {
-        this.defaultUserDetailService = defaultUserDetailService;
-    }
+    private final PairingSessionService pairingSessionService;
 
     @Autowired
-    public PairingSessionController(PairingSessionRepository pairingSessionRepository) {
-        this.pairingSessionRepository = pairingSessionRepository;
+    public PairingSessionController(PairingSessionService pairingSessionService) {
+        this.pairingSessionService = pairingSessionService;
     }
 
     @RequestMapping(value = "/api/public/sessions", method= RequestMethod.GET)
@@ -47,12 +42,11 @@ public class PairingSessionController {
 
     @RequestMapping(value = "/api/session/add", method= RequestMethod.POST)
     public String savePairingSession(@RequestBody PairingSession pairingSession, Principal principal) throws ParseException {
-        SimpleDateFormat sessionDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        Date atDate = sessionDateFormat.parse(pairingSession.getDateAsString());
-        pairingSession.setAtTime(atDate);
+
         User currentUser = ((AuthenticatedUser)((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getUser();
         pairingSession.setCreator(currentUser);
-        pairingSessionRepository.save(pairingSession);
+
+        pairingSessionService.save(pairingSession);
 
         return "index";
     }
