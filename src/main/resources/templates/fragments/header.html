@@ -27,6 +27,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="#" th:href="@{/}">Home</a></li>
                 <li><a href="/about" th:href="@{/about}">About</a></li>
+                <li th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <a th:case="${true}" href="/calendar" tabindex="-1" > My Calendar </a>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

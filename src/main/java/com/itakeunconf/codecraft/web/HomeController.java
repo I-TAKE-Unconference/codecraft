@@ -35,6 +35,11 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping({"/calendar"})
+    String calendar() {
+        return "calendar";
+    }
+
     @RequestMapping("/about")
     String about() { return "about"; }
 
