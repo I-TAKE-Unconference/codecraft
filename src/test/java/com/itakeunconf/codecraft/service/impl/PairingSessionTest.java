@@ -28,13 +28,36 @@ public class PairingSessionTest {
         this.userRepositoryMock = Mockito.mock(UserRepository.class);
 
         DefaultPairingSessionService service = new DefaultPairingSessionService(pairingSessionRepositoryMock);
+        User participant = Mockito.mock(User.class);
+        User creator = Mockito.mock(User.class);
+
+        Mockito
+                .when(session.getCreator())
+                .thenReturn(creator);
+        Mockito
+                .when(userRepositoryMock.getOne(Mockito.anyLong()))
+                .thenReturn(participant);
+
+        service.joinSession(1L, participant);
+        Mockito.verify(session).setParticipant(participant);
+    }
+
+
+    @Test(expected = Exception.class)
+    public void joining_a_session_created_by_the_same_user_fails() {
+        this.userRepositoryMock = Mockito.mock(UserRepository.class);
+
+        DefaultPairingSessionService service = new DefaultPairingSessionService(pairingSessionRepositoryMock);
         User user = Mockito.mock(User.class);
 
         Mockito
                 .when(userRepositoryMock.getOne(Mockito.anyLong()))
                 .thenReturn(user);
 
+        Mockito
+                .when(session.getCreator())
+                .thenReturn(user);
+
         service.joinSession(1L, user);
-        Mockito.verify(session).setParticipant(user);
     }
 }

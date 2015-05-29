@@ -40,6 +40,9 @@ public class DefaultPairingSessionService implements PairingSessionService {
     @Override
     public PairingSession joinSession(Long sessionId, User participant) {
         PairingSession session = pairingSessionRepository.findOne(sessionId);
+        if (session.getCreator().equals(participant)) {
+            throw new IllegalArgumentException("You cannot join your own session");
+        }
         session.setParticipant(participant);
 
         PairingSession savedSession = pairingSessionRepository.save(session);
