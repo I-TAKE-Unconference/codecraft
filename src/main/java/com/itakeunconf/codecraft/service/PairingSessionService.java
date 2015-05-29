@@ -12,4 +12,7 @@ public interface PairingSessionService {
     public List<PairingSession> getAllPublicSessions();
     public PairingSession joinSession(Long sessionId, User participant);
     public List<PairingSession> findAllByOrderByIdDesc();
+    public List<PairingSession> findByCreatorNotAndParticipant(User creator, User participant);
+    public List<PairingSession> findByParticipant(User participant);
+
 }

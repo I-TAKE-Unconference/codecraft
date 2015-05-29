@@ -23,9 +23,20 @@ public class PairingSessionController {
         this.pairingSessionService = pairingSessionService;
     }
 
+    private User getUser(Principal principal) {
+        return ((AuthenticatedUser)((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getUser();
+    }
+
     @RequestMapping(value = "/api/public/sessions", method= RequestMethod.GET)
-    public @ResponseBody List<PairingSession> getPublicSessions(){
-        return pairingSessionService.findAllByOrderByIdDesc();
+    public @ResponseBody List<PairingSession> getPublicSessions(Principal principal) {
+
+
+        if (principal!=null) {
+            User user = getUser(principal);
+            return pairingSessionService.findByCreatorNotAndParticipant(user, null);
+        } else {
+            return pairingSessionService.findByParticipant(null);
+        }
     }
 
     @RequestMapping(value = "/sessions", method = RequestMethod.GET)
@@ -36,8 +47,7 @@ public class PairingSessionController {
     @RequestMapping(value = "/api/session/add", method= RequestMethod.POST)
     public String savePairingSession(@RequestBody PairingSession pairingSession, Principal principal) throws ParseException {
 
-        User currentUser = ((AuthenticatedUser)((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getUser();
-        pairingSession.setCreator(currentUser);
+        pairingSession.setCreator(getUser(principal));
 
         pairingSessionService.save(pairingSession);
 

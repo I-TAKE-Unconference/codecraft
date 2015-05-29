@@ -29,13 +29,9 @@ public class CodeCraftDatabaseLoader {
 
     @PostConstruct
     private void initDatabase() {
-        User user = new User();
-        user.setUserName("user01");
-        user.setEmail("user@user.com");
-        user.setPasswordHash(new BCryptPasswordEncoder().encode("user01"));
-        user.setRole(Role.USER);
 
-        User savedUser = userRepository.save(user);
+        User savedUser = createUser("user01", "user@user.com");
+        User secondUser = createUser("user02", "user2@user.com");
 
         PairingSession pairingSessionOne = new PairingSession();
         pairingSessionOne.setSessionName("Let's code together");
@@ -56,5 +52,15 @@ public class CodeCraftDatabaseLoader {
         pairingSessionTwo.setDuration("1 hour");
 
         pairingSessionRepository.save(Arrays.asList(pairingSessionOne,pairingSessionTwo) );
+    }
+
+    private User createUser(String userName, String email) {
+        User user = new User();
+        user.setUserName(userName);
+        user.setEmail(email);
+        user.setPasswordHash(new BCryptPasswordEncoder().encode(userName));
+        user.setRole(Role.USER);
+
+        return userRepository.save(user);
     }
 }
