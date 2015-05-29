@@ -25,9 +25,16 @@ $( document ).ready(function() {
     $("#sessions-list-container").on("click", ".btn-join", function() {
         var joinBtn = this;
 
-        $.post("/api/public/session/" + $(this).attr("data-id") + "/", function() {
-            $(joinBtn).remove();
-        });
+
+         $.ajax({
+                type: "POST",
+                url: "/api/public/session/" + $(this).attr("data-id") + "/join",
+                beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('#csrfToken').val())},
+                success: function(){
+                    $(joinBtn).remove();
+                },
+                contentType: 'application/json'
+            });
     });
 
 });

@@ -33,11 +33,11 @@ public class PairingSession {
     @ManyToOne
     private User creator;
 
-    @NotNull
-    private String location;
-
     @ManyToOne
     private User participant;
+
+    @NotNull
+    private String location;
 
     private String dateAsString;
 
@@ -101,10 +101,6 @@ public class PairingSession {
         this.atTime = atTime;
     }
 
-    public void setParticipant(User participant) {
-        this.participant = participant;
-    }
-
     @Transient
     public String getDateAsString() {
         return dateAsString;
@@ -120,5 +116,13 @@ public class PairingSession {
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public User getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(User participant) {
+        this.participant = participant;
     }
 }

@@ -27,12 +27,14 @@ public class PairingSessionTest {
     public void joining_a_session_saves_user_as_participant() {
         this.userRepositoryMock = Mockito.mock(UserRepository.class);
 
-        DefaultPairingSessionService service = new DefaultPairingSessionService(pairingSessionRepositoryMock, userRepositoryMock);
+        DefaultPairingSessionService service = new DefaultPairingSessionService(pairingSessionRepositoryMock);
         User user = Mockito.mock(User.class);
+
         Mockito
                 .when(userRepositoryMock.getOne(Mockito.anyLong()))
                 .thenReturn(user);
-        service.joinSession(1L,1L);
+
+        service.joinSession(1L, user);
         Mockito.verify(session).setParticipant(user);
     }
 }
