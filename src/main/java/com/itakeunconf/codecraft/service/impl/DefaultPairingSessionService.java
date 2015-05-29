@@ -1,6 +1,7 @@
 package com.itakeunconf.codecraft.service.impl;
 
 import com.itakeunconf.codecraft.model.PairingSession;
+import com.itakeunconf.codecraft.model.User;
 import com.itakeunconf.codecraft.repository.PairingSessionRepository;
 import com.itakeunconf.codecraft.service.PairingSessionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class DefaultPairingSessionService implements PairingSessionService {
     @Override
     public List<PairingSession> getAllPublicSessions() {
         return pairingSessionRepository.findAll();
+    }
+
+    @Override
+    public void joinSession(Long sessionId, User participant) {
+        PairingSession session = pairingSessionRepository.findOne(sessionId);
+        session.setParticipant(participant);
+        pairingSessionRepository.save(session);
     }
 
     private PairingSession translateSessionTime(PairingSession session) throws ParseException {

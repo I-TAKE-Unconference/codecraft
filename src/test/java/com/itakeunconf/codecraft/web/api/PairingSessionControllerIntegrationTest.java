@@ -1,7 +1,6 @@
 package com.itakeunconf.codecraft.web.api;
 
 import com.itakeunconf.codecraft.model.PairingSession;
-import com.itakeunconf.codecraft.repository.PairingSessionRepository;
 import com.itakeunconf.codecraft.service.PairingSessionService;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.junit.Before;
