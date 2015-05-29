@@ -16,7 +16,7 @@ public class PairingSession {
     @GeneratedValue(generator = "seq_gen", strategy = GenerationType.AUTO)
     private Long id;
 
-    @Size(min = 6, max = 255)
+    @Size(min = 1, max = 255)
     @NotNull
     private String sessionName;
 

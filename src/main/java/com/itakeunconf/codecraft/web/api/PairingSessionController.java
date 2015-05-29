@@ -25,7 +25,7 @@ public class PairingSessionController {
 
     @RequestMapping(value = "/api/public/sessions", method= RequestMethod.GET)
     public @ResponseBody List<PairingSession> getPublicSessions(){
-        return pairingSessionService.getAllPublicSessions();
+        return pairingSessionService.findAllByOrderByIdDesc();
     }
 
     @RequestMapping(value = "/sessions", method = RequestMethod.GET)

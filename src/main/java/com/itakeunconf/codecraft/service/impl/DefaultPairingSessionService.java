@@ -33,10 +33,18 @@ public class DefaultPairingSessionService implements PairingSessionService {
     }
 
     @Override
-    public void joinSession(Long sessionId, User participant) {
+    public List<PairingSession> findAllByOrderByIdDesc() {
+        return pairingSessionRepository.findAllByOrderByIdDesc();
+    }
+
+    @Override
+    public PairingSession joinSession(Long sessionId, User participant) {
         PairingSession session = pairingSessionRepository.findOne(sessionId);
         session.setParticipant(participant);
-        pairingSessionRepository.save(session);
+
+        PairingSession savedSession = pairingSessionRepository.save(session);
+
+        return savedSession;
     }
 
     private PairingSession translateSessionTime(PairingSession session) throws ParseException {

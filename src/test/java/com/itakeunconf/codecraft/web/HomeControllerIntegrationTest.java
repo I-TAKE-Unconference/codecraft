@@ -1,9 +1,11 @@
 package com.itakeunconf.codecraft.web;
 
-import com.itakeunconf.codecraft.web.api.PairingSessionController;
+import com.itakeunconf.codecraft.service.PairingSessionService;
 import org.eclipse.jetty.webapp.WebAppContext;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -18,10 +20,17 @@ import static com.jayway.restassured.RestAssured.when;
 @WebAppConfiguration
 public class HomeControllerIntegrationTest {
 
+    private PairingSessionService pairingSessionService;
+
+    @Before
+    public void setUp(){
+        pairingSessionService = Mockito.mock(PairingSessionService.class);
+    }
+
     @Test
     public void getHome() throws Exception {
         given()
-            .standaloneSetup(new HomeController())
+            .standaloneSetup(new HomeController(pairingSessionService))
         .when()
             .get("/")
         .then()

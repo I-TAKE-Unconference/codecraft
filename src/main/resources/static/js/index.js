@@ -5,11 +5,9 @@ $( document ).ready(function() {
     $.getJSON( "/api/public/sessions", function( data ) {
       var items = [];
         $.each( data, function( idx, item ) {
-
-
             items.push( "<li class='list-group-item' id='" + item.id + "'>" +
             createJoinButton(item) +
-            createDescription(item) + 
+            createDescription(item) +
             "<strong>"+ niceDate(item.atTime) +"</strong>" + " <span>for</span> " +
             "<strong>"+item.duration+"</strong>" + " <span>in</span> " +
             "<strong>"+item.location+"</strong>" + " <span>coding in </span>  " +
@@ -24,25 +22,11 @@ $( document ).ready(function() {
         }).appendTo( sessionsListContainer );
     });
 
-    $("#sessions-list-container").on("click", ".btn-join", function() {
-        var joinBtn = this;
-
-        $.ajax({
-            type: "POST",
-            url: "/api/public/session/" + $(this).attr("data-id") + "/join",
-            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('#csrfToken').val())},
-            success: function() {
-                $(joinBtn).remove();
-            },
-            contentType: 'application/json'
-        });
-    });
-
     function createDescription(item) {
         var description = "<strong>" + item.sessionName + "</strong> created by <strong>" + item.creator.userName + "</strong>";
 
-        if(typeof item.participant == "object")
-            description += " and " + item.participant.userName + " is participating";
+        if(typeof(item.participant) != "undefined" && item.participant != null)
+            description += " and <strong>" + item.participant.userName + "</strong> is participating";
 
         description += " <br/> "
 
@@ -53,7 +37,7 @@ $( document ).ready(function() {
         if(!item.participant)
             return "<a href='/join/" + item.id + "' class='btn btn-info pull-right btn-join'>Join</a>"
         else
-            return "";
+            return "<span class='pull-right'><i class='glyphicon glyphicon-lock'></i></span>";
     }
 
 });

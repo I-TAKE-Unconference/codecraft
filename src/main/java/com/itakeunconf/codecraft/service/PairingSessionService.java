@@ -10,6 +10,6 @@ public interface PairingSessionService {
 
     public PairingSession save(PairingSession pairingSession) throws ParseException;
     public List<PairingSession> getAllPublicSessions();
-
-    void joinSession(Long sessionId, User participant);
+    public PairingSession joinSession(Long sessionId, User participant);
+    public List<PairingSession> findAllByOrderByIdDesc();
 }
