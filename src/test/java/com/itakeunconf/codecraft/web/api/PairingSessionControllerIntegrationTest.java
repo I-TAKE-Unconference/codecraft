@@ -28,7 +28,7 @@ public class PairingSessionControllerIntegrationTest {
     public void setup() {
         this.pairingSessionServiceMock = Mockito.mock(PairingSessionService.class);
         Mockito
-                .when(pairingSessionServiceMock.findAllByOrderByIdDesc())
+                .when(pairingSessionServiceMock.findByParticipant(null))
                 .thenReturn(Arrays.asList(buildSession("session one"), buildSession("session two")));
     }
 
@@ -38,12 +38,12 @@ public class PairingSessionControllerIntegrationTest {
         given()
             .standaloneSetup(new PairingSessionController(pairingSessionServiceMock))
         .when()
-            .get("/api/public/sessions")
+                .get("/api/public/sessions")
         .then()
             .statusCode(HttpStatus.OK.value())
             .body("size()", is(2));
 
-        Mockito.verify(pairingSessionServiceMock, Mockito.times(1)).findAllByOrderByIdDesc();
+        Mockito.verify(pairingSessionServiceMock, Mockito.times(1)).findByParticipant(null);
         Mockito.verifyNoMoreInteractions(pairingSessionServiceMock);
     }
 
