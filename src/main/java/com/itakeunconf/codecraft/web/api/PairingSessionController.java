@@ -28,14 +28,6 @@ public class PairingSessionController {
         return pairingSessionService.getAllPublicSessions();
     }
 
-    @RequestMapping(value = "/api/public/session/(sessionId)/join",method = RequestMethod.POST)
-    public @ResponseBody String joinSession(@PathVariable Long sessionId, Principal principal) {
-        User currentUser = ((AuthenticatedUser)((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getUser();
-        pairingSessionService.joinSession(sessionId, currentUser);
-
-        return "ok";
-    }
-
     @RequestMapping(value = "/sessions", method = RequestMethod.GET)
     public String sessions(){
         return "sessions";
