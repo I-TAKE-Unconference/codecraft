@@ -21,7 +21,7 @@
                     <form th:action="@{/createaccount}" method="post" class="form-signin">
 
                         <input type="text" required="required" name="username" class="form-control"
-                               placeholder="Username" data-toggle="tooltip" data-placement="left" title="Enter minimum 6 characters"/>
+                               placeholder="Username"/>
                         <input type="password" required="required" name="password" class="form-control" placeholder="Password"/>
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
