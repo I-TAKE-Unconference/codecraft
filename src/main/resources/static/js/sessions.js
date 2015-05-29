@@ -52,6 +52,7 @@ function saveSession() {
     pairingSession.language = $("#sessionProgrammingLanguage").val();
     pairingSession.practice = $("#whatToPractice").val();
 
+    checkFormValidity();
 
     console.log("pairingSession", pairingSession);
 
