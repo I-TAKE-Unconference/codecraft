@@ -20,6 +20,13 @@ $( document ).ready(function() {
             "class": "list-group",
             html: items.join( "" )
         }).appendTo( sessionsListContainer );
+
+        if(items.length == 0){
+            $("<div/>", {
+                        "class" : "alert alert-info",
+                        "html" : "There are no open sessions to join"
+                        }).appendTo( sessionsListContainer );
+        }
     });
 
     function createDescription(item) {
