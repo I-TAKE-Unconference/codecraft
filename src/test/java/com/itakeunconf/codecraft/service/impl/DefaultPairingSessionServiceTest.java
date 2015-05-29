@@ -34,7 +34,8 @@ public class DefaultPairingSessionServiceTest {
                 .then(AdditionalAnswers.returnsFirstArg());
         when(pairingSessionRepository.findAll())
                 .thenReturn(new ArrayList<>(Arrays.asList(session)));
-
+        when(pairingSessionRepository.findAllByOrderByIdDesc())
+                .thenReturn(new ArrayList<>(Arrays.asList(session)));
     }
 
     @Test

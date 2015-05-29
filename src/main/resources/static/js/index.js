@@ -6,8 +6,8 @@ $( document ).ready(function() {
       var items = [];
         $.each( data, function( idx, item ) {
             items.push( "<li class='list-group-item' id='" + item.id + "'>" +
-            "<a href='#' class='btn btn-info pull-right btn-join'>Join</a>" +
-            "<strong>" + item.sessionName + "</strong> created by <strong>" + item.creator.userName + "</strong> <br/> " +
+            createJoinButton(item) +
+            createDescription(item) +
             "<strong>"+ niceDate(item.atTime) +"</strong>" + " <span>for</span> " +
             "<strong>"+item.duration+"</strong>" + " <span>in</span> " +
             "<strong>"+item.location+"</strong>" + " <span>coding in </span>  " +
@@ -21,6 +21,24 @@ $( document ).ready(function() {
             html: items.join( "" )
         }).appendTo( sessionsListContainer );
     });
+
+    function createDescription(item) {
+        var description = "<strong>" + item.sessionName + "</strong> created by <strong>" + item.creator.userName + "</strong>";
+
+        if(typeof(item.participant) != "undefined" && item.participant != null)
+            description += " and <strong>" + item.participant.userName + "</strong> is participating";
+
+        description += " <br/> "
+
+        return description;
+    }
+
+    function createJoinButton(item) {
+        if(!item.participant)
+            return "<a href='/join/" + item.id + "' class='btn btn-info pull-right btn-join'>Join</a>"
+        else
+            return "<span class='pull-right'><i class='glyphicon glyphicon-lock'></i></span>";
+    }
 
 });
 
