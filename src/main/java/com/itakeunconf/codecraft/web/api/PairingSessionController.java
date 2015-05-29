@@ -27,9 +27,15 @@ public class PairingSessionController {
         return ((AuthenticatedUser)((UsernamePasswordAuthenticationToken) principal).getPrincipal()).getUser();
     }
 
+
+    @RequestMapping(value = "/api/public/sessions/calendar", method= RequestMethod.GET)
+    public @ResponseBody List<PairingSession> getSessionsCalendar(Principal principal) {
+        User user = getUser(principal);
+        return pairingSessionService.findByParticipantOrCreator(user, user);
+    }
+
     @RequestMapping(value = "/api/public/sessions", method= RequestMethod.GET)
     public @ResponseBody List<PairingSession> getPublicSessions(Principal principal) {
-
 
         if (principal!=null) {
             User user = getUser(principal);

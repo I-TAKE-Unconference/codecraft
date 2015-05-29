@@ -43,7 +43,6 @@ public class HomeController {
     @RequestMapping("/about")
     String about() { return "about"; }
 
-
     @RequestMapping(value = "/join/{sessionId}",method = RequestMethod.GET)
     public ModelAndView joinSession(@PathVariable Long sessionId, Principal principal, final RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView("redirect:" + "/index");

@@ -14,4 +14,5 @@ public interface PairingSessionRepository extends JpaRepository<PairingSession, 
 
     public List<PairingSession> findByCreatorNotAndParticipant(User creator, User participant);
     public List<PairingSession> findByParticipant(User participant);
+    public List<PairingSession> findByParticipantOrCreator(User participant, User creator);
 }

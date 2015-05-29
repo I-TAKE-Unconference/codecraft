@@ -48,6 +48,11 @@ public class DefaultPairingSessionService implements PairingSessionService {
     }
 
     @Override
+    public List<PairingSession> findByParticipantOrCreator(User participant, User creator) {
+        return pairingSessionRepository.findByParticipantOrCreator(participant, creator);
+    }
+
+    @Override
     public PairingSession joinSession(Long sessionId, User participant) {
         PairingSession session = pairingSessionRepository.findOne(sessionId);
         if (session.getCreator().equals(participant)) {
