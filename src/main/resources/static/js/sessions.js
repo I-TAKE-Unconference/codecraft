@@ -6,6 +6,7 @@ function validateField(id) {
     }
     else {
         var successDiv = $("#" + id).closest("div");
+
         successDiv.removeClass("has-error");
         return true;
     }
@@ -17,57 +18,55 @@ function checkFormValidity(){
 
     if (!validateField("sessionName")) {
         $("#sessionName").focus();
-        invalidItems;
+        invalidItems++;
     }
     if (!validateField("atTime")) {
         $("#atTime").focus();
-        return false;
+        invalidItems++;
     }
     if (!validateField("sessionDuration")) {
         $("#sessionDuration").focus();
-        return false;
+        invalidItems++;
     }
     if (!validateField("sessionLocation")) {
         $("#sessionLocation").focus();
-        return false;
+        invalidItems++;
     }
     if (!validateField("sessionProgrammingLanguage")) {
         $("#sessionProgrammingLanguage").focus();
-        return false;
+        invalidItems++;
     }
     if (!validateField("whatToPractice")) {
         $("#whatToPractice").focus();
-        return false;
+        invalidItems++;
     }
-    return true;
+
+    return invalidItems <= 0;
 }
 
 function saveSession() {
-    //if(checkFormValidity()){
-    var pairingSession = {};
-    pairingSession.sessionName = $("#sessionName").val();
-    pairingSession.dateAsString = $("#atTime").val();
-    pairingSession.duration = $("#sessionDuration").val();
-    pairingSession.location = $("#sessionLocation").val();
-    pairingSession.language = $("#sessionProgrammingLanguage").val();
-    pairingSession.practice = $("#whatToPractice").val();
+    if(checkFormValidity()) {
+        var pairingSession = {};
+        pairingSession.sessionName = $("#sessionName").val();
+        pairingSession.dateAsString = $("#atTime").val();
+        pairingSession.duration = $("#sessionDuration").val();
+        pairingSession.location = $("#sessionLocation").val();
+        pairingSession.language = $("#sessionProgrammingLanguage").val();
+        pairingSession.practice = $("#whatToPractice").val();
 
-    checkFormValidity();
-
-    console.log("pairingSession", pairingSession);
-
-    $.ajax({
-        type: "POST",
-        url: '/api/session/add',
-        data: JSON.stringify(pairingSession),
-        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('#csrfToken').val())},
-        success: function(){
-            window.location.href="/";
-        },
-        contentType: 'application/json'
-    });
-
-    //}
+        $.ajax({
+            type: "POST",
+            url: '/api/session/add',
+            data: JSON.stringify(pairingSession),
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRF-Token', $('#csrfToken').val())
+            },
+            success: function () {
+                window.location.href = "/";
+            },
+            contentType: 'application/json'
+        });
+    }
 }
 
 
