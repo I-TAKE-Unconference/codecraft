@@ -58,8 +58,8 @@ public class DefaultPairingSessionServiceTest {
     public void onGetAllPublicSessions_return_openSessions(){
         PairingSessionService pairingSessionService = new DefaultPairingSessionService(pairingSessionRepository);
 
-        assertThat(pairingSessionService.getAllPublicSessions()).isNotNull();
-        assertThat(pairingSessionService.getAllPublicSessions().size()).isEqualTo(1);
+        assertThat(pairingSessionService.findAllByOrderByIdDesc()).isNotNull();
+        assertThat(pairingSessionService.findAllByOrderByIdDesc().size()).isEqualTo(1);
     }
 
 

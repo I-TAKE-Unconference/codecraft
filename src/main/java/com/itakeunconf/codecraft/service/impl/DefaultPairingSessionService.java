@@ -27,8 +27,8 @@ public class DefaultPairingSessionService implements PairingSessionService {
     }
 
     @Override
-    public List<PairingSession> getAllPublicSessions() {
-        return pairingSessionRepository.findAll();
+    public List<PairingSession> findAllByOrderByIdDesc() {
+        return pairingSessionRepository.findAllByOrderByIdDesc();
     }
 
     private PairingSession translateSessionTime(PairingSession session) throws ParseException {

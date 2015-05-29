@@ -8,5 +8,5 @@ import java.util.List;
 public interface PairingSessionService {
 
     public PairingSession save(PairingSession pairingSession) throws ParseException;
-    public List<PairingSession> getAllPublicSessions();
+    public List<PairingSession> findAllByOrderByIdDesc();
 }
