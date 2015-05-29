@@ -35,7 +35,7 @@ public class CodeCraftDatabaseLoader {
         user.setPasswordHash(new BCryptPasswordEncoder().encode("user01"));
         user.setRole(Role.USER);
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
 
         PairingSession pairingSessionOne = new PairingSession();
         pairingSessionOne.setSessionName("Let's code together");
@@ -44,6 +44,7 @@ public class CodeCraftDatabaseLoader {
         pairingSessionOne.setLocation("ITAKE Product Development Room");
         pairingSessionOne.setAtTime(DateUtils.createNow().getTime());
         pairingSessionOne.setDuration("1 hour");
+        pairingSessionOne.setCreator(savedUser);
 
         PairingSession pairingSessionTwo = new PairingSession();
         pairingSessionTwo.setSessionName("Ruby ninja pairing");
@@ -51,6 +52,7 @@ public class CodeCraftDatabaseLoader {
         pairingSessionTwo.setPractice("Ninja pairing");
         pairingSessionTwo.setLocation("ITAKE Product Development Room");
         pairingSessionTwo.setAtTime(DateUtils.createNow().getTime());
+        pairingSessionTwo.setCreator(savedUser);
         pairingSessionTwo.setDuration("1 hour");
 
         pairingSessionRepository.save(Arrays.asList(pairingSessionOne,pairingSessionTwo) );

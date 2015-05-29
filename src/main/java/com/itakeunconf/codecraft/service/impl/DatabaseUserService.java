@@ -36,7 +36,7 @@ public class DatabaseUserService implements UserService {
         User user = new User();
         user.setUserName(username);
         user.setEmail(username);
-        user.setPasswordHash(new BCryptPasswordEncoder().encode("password"));
+        user.setPasswordHash(new BCryptPasswordEncoder().encode(password));
         user.setRole(Role.USER);
         try {
             userRepository.save(user);

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+
+<head>
+    <title>Welcome to CodeCraft - Session page</title>
+    <script language="JavaScript" src="/js/sessions.js"></script>
+</head>
+
+<section layout:fragment="content">
+
+    <div class="hero-unit">
+        <h1>Manage sessions</h1>
+    </div>
+
+    <div class="panel panel-info" style="margin-top:30px">
+        <div class="panel-heading">
+            <h2 class="panel-title"><strong>Create new session</strong></h2>
+        </div>
+        <div id="manage-sessions-container" class="panel-body">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" id="sessionName" name="sessionName"/>
+
+                <p id="sessionNameErrorBlock" class="help-block" style="display:none;">Please
+                    provide a name for the session!</p>
+            </div>
+            <div class="form-group">
+                <label>When</label>
+                <input class="form-control" id="atTime" name="atTime"/>
+
+                <p id="atTimeErrorBlock" class="help-block" style="display:none;">Please
+                    provide a name for the session!</p>
+            </div>
+            <div class="form-group">
+                <label>For how long</label>
+                <input class="form-control" id="sessionDuration" name="sessionDuration"/>
+
+                <p id="sessionDurationErrorBlock" class="help-block" style="display:none;">Please
+                    provide a value for the session duration!</p>
+            </div>
+            <div class="form-group">
+                <label>Location</label>
+                <input class="form-control" id="sessionLocation" name="sessionLocation"/>
+
+                <p id="sessionLocationErrorBlock" class="help-block" style="display:none;">Please
+                    provide a name for the session location!</p>
+            </div>
+            <div class="form-group">
+                <label>Programming language</label>
+                <input class="form-control" id="sessionProgrammingLanguage" name="sessionProgrammingLanguage"/>
+
+                <p id="sessionProgrammingLanguageErrorBlock" class="help-block" style="display:none;">Please
+                    provide a value for the session programming language!</p>
+            </div>
+            <div class="form-group">
+                <label>What to practice</label>
+                <input class="form-control" id="whatToPractice" name="whatToPractice"/>
+
+                <p id="whatToPracticeErrorBlock" class="help-block" style="display:none;">Please fill in this
+                    mandatory field!</p>
+            </div>
+            <input id="csrfToken" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Add session"
+                       id="addButton" onclick="saveSession()"/>
+                <input type="reset" class="btn" value="Reset"/>
+            </div>
+        </div>
+    </div>
+</section>
+
+</html>
